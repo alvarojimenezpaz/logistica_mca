@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="logistica_mca.traslado_list_view">
+            <field name="name">logistica_mca.traslado.tree.view</field>
+            <field name="model">logistica_mca.traslado</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="fecha"/>
+                    <field name="guia"/>
+                    <field name="pedido" optional="hide"/>
+                    <field name="hes"/>
+                    <field name="factura" optional="hide"/>
+                    <field name="marcas_id"/>
+                    <field name="modelos_id"/>
+                    <field name="vin"/>
+                    <field name="tipo_traslado"/>
+                    <field name="solicita"/>
+                    <field name="conductor"/>
+                    <field name="cliente"/>
+                    <field name="rendicion_id" widget="many2many_tags" optional="hide"/>
+                    <field name="reclamo_id" widget="many2many_tags" optional="hide"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="logistica_mca.traslado_form_view">
+            <field name="name">logistica_mca.traslado.form.view</field>
+            <field name="model">logistica_mca.traslado</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1>
+                                <field name="name" readonly="1"/>
+                            </h1>
+                        </div>
+
+                        <group>
+                            <group>
+                                <field name="guia"/>
+                                <field name="pedido"/>
+                                <field name="hes"/>
+                                <field name="factura"/>
+                            </group>
+                            <group>
+                                <field name="fecha"/>
+                                <field name="tipo_traslado"/>
+                                <field name="solicita"/>
+                                <field name="conductor"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="cliente"/>
+                                <field name="marcas_id"/>
+                                <field name="modelos_id"/>
+                                <field name="vin"/>
+                            </group>
+                            <group>
+                                <field name="valortraslado_id" />
+                                <field name="currency_id" invisible="1"/>
+                                <field name="valor" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                <field name="valor_adicionales" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                <field name="valor_comisiones" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                <field name="valor_reclamos" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                <field name="valor_rendiciones" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            </group>
+                        </group>
+
+                        <notebook>
+
+                            <page string="Rendiciones" name="rendicion">
+                                <field name="rendicion_id"/>
+                            </page>
+
+                            <page string="Reclamos" name="reclamo">
+                                <field name="reclamo_id"/>
+                            </page>
+
+                            <page string="Adicionales" name="adicional">
+                                <field name="adicional_id" widget="section_and_note_one2many">
+                                  <tree string="Detalle de Adicionales" editable="bottom">
+                                    <control>
+                                      <create name="add_detalle_adicional" string="Agrega adicional"/>
+                                    </control>
+                                    <field name="name"/>
+                                    <field name="currency_id" invisible="1"/>
+                                    <field name="valor" widget="monetary" options="{'currency_field': 'currency_id'}" />
+                                  </tree>
+                                </field>
+                            </page>
+
+                            <page string="Comisiones" name="comision">
+                                <field name="comision_id" widget="section_and_note_one2many">
+                                  <tree string="Detalle de Comisiones" editable="bottom">
+                                    <control>
+                                      <create name="add_detalle_comision" string="Agrega comisión"/>
+                                    </control>
+                                    <field name="name"/>
+                                    <field name="currency_id" invisible="1"/>
+                                    <field name="valor" widget="monetary" options="{'currency_field': 'currency_id'}" />
+                                  </tree>
+                                </field>
+                            </page>
+
+                        </notebook>
+
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="logistica_mca.traslado_search_view">
+            <field name="name">logistica_mca.traslado.search.view</field>
+            <field name="model">logistica_mca.traslado</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name" />
+                    <field name="guia"/>
+                    <field name="pedido"/>
+                    <field name="hes"/>
+                    <field name="factura"/>
+                    <field name="fecha"/>
+                    <field name="tipo_traslado"/>
+                    <field name="solicita"/>
+                    <field name="conductor"/>
+                    <field name="cliente"/>
+                    <field name="marcas_id"/>
+                    <field name="modelos_id"/>
+                    <field name="vin"/>
+<!--                    <field name="vehiculo_id" filter_domain="['|','|',('vehiculo_id.vin', 'ilike', self),
+                                                                      ('vehiculo_id.marcas_id.name', 'ilike', self),
+                                                                      ('vehiculo_id.modelos_id.name', 'ilike', self)]"/>
+-->
+                    <field name="rendicion_id"/>
+                    <field name="reclamo_id"/>
+
+                    <group expand="0" string="Agrupar por">
+                        <filter name="tipo_traslado" context="{'group_by':'tipo_traslado'}"/>
+                        <filter name="fecha"  context="{'group_by':'fecha'}"/>
+                        <filter name="conductor" context="{'group_by':'conductor'}"/>
+                        <filter name="solicita" context="{'group_by':'solicita'}"/>
+                        <filter name="cliente"  context="{'group_by':'cliente'}"/>
+                        <filter name="marcas_id"  context="{'group_by':'marcas_id'}"/>
+                        <filter name="modelos_id"  context="{'group_by':'modelos_id'}"/>
+                        <filter name="vin"  context="{'group_by':'vin'}"/>
+                    </group>
+
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="logistica_mca.traslado_action_window">
+            <field name="name">Traslado</field>
+            <field name="res_model">logistica_mca.traslado</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="logistica_mca.traslado_search_view"/>
+        </record>
+
+        <!-- actions -->
+        <menuitem name="Traslado" id="logistica_mca.traslado_menu" parent="logistica_mca.traslados_menu"
+                  action="logistica_mca.traslado_action_window" sequence = "10" />
+
+    </data>
+</odoo>

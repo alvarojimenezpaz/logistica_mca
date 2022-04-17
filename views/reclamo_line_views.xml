@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <record model="ir.ui.view" id="logistica_mca.reclamo_line_list_view">
+      <field name="name">logistica_mca.reclamo_line.tree.view</field>
+      <field name="model">logistica_mca.reclamo.line</field>
+      <field name="arch" type="xml">
+        <tree>
+            <field name="reclamo_id" widget="many2one"/>
+            <field name="tipo_reclamo"/>
+            <field name="fecha_reclamo"/>
+            <field name="tipo_siniestro_id" optional="show"/>
+            <field name="nro_siniestro" optional="show"/>
+            <field name="fecha" optional="show"/>
+            <field name="currency_id" invisible="1"/>
+            <field name="valor" widget="monetary" options="{'currency_field': 'currency_id'}" optional="show"/>
+            <field name="deducible" optional="show"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="logistica_mca.reclamo_line_search_view">
+        <field name="name">logistica_mca.reclamo_line.search.view</field>
+        <field name="model">logistica_mca.reclamo.line</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="reclamo_id"/>
+                <field name="tipo_reclamo"/>
+                <field name="fecha_reclamo"/>
+                <field name="tipo_siniestro_id"/>
+                <field name="nro_siniestro"/>
+                <field name="fecha"/>
+
+                <group expand="0" string="Agrupar por">
+                    <filter name="reclamo_id"  context="{'group_by':'reclamo_id'}"/>
+                    <filter name="tipo_reclamo"  context="{'group_by':'tipo_reclamo'}"/>
+                    <filter name="fecha_reclamo"  context="{'group_by':'fecha_reclamo'}"/>
+                    <filter name="tipo_siniestro_id"  context="{'group_by':'tipo_siniestro_id'}"/>
+                    <filter name="nro_siniestro"  context="{'group_by':'nro_siniestro'}"/>
+                    <filter name="fecha"  context="{'group_by':'fecha'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="logistica_mca.reclamo_line_action_window">
+      <field name="name">Detalle de Reclamos</field>
+      <field name="res_model">logistica_mca.reclamo.line</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- actions -->
+    <menuitem name="Detalle de Reclamos" id="logistica_mca.reclamo_line_menu"
+              parent="logistica_mca.reclamos_menu"
+              action="logistica_mca.reclamo_line_action_window"
+              sequence = "40"
+    />
+
+  </data>
+</odoo>

@@ -1,0 +1,59 @@
+<odoo>
+  <data>
+
+    <record model="ir.ui.view" id="logistica_mca.conductor_list_view">
+      <field name="name">logistica_mca.conductor.tree.view</field>
+      <field name="model">logistica_mca.conductor</field>
+      <field name="arch" type="xml">
+        <tree editable="top" create="1" delete="1" multi_edit="1">
+          <field name="name"/>
+          <field name="rut"/>
+          <field name="tipo_licencia"/>
+          <field name="tipo_contrato"/>
+          <field name="telefono"/>
+          <field name="email"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="logistica_mca.conductor_form_view">
+      <field name="name">logistica_mca.conductor.form.view</field>
+      <field name="model">logistica_mca.conductor</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <group>
+                <field name="name"/>
+                <field name="rut"/>
+              </group>
+              <group>
+                <field name="tipo_licencia"/>
+                <field name="tipo_contrato"/>
+              </group>
+              <group>
+                <field name="telefono"/>
+                <field name="email"/>
+              </group>
+            </group>
+          </sheet>
+          <div class="oe_chatter">
+              <field name="message_follower_ids"/>
+              <field name="activity_ids"/>
+              <field name="message_ids"/>
+          </div>
+        </form>
+      </field>
+    </record>
+
+    
+    <record model="ir.actions.act_window" id="logistica_mca.conductor_action_window">
+      <field name="name">Conductor</field>
+      <field name="res_model">logistica_mca.conductor</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- actions -->
+
+  </data>
+</odoo>

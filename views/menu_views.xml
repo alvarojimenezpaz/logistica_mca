@@ -1,0 +1,36 @@
+<odoo>
+  <data>
+  
+    <!-- Top menu item -->
+    <menuitem name="Logística" id="logistica_mca.menu_root" web_icon="logistica_mca,static/description/icon.png"/>
+
+    <!-- menu de logistica-mca -->
+    <menuitem name="Traslados" id="logistica_mca.traslados_menu" parent="logistica_mca.menu_root" sequence = "10"/>
+    <menuitem name="Rendiciones" id="logistica_mca.rendiciones_menu" parent="logistica_mca.menu_root" sequence = "20"/>
+    <menuitem name="Reclamos" id="logistica_mca.reclamos_menu" parent="logistica_mca.menu_root" sequence = "30" />
+    <menuitem name="Parámetros" id="logistica_mca.parametros_menu" parent="logistica_mca.menu_root" sequence = "40"/>
+
+    <!-- actions de menu Parametros -->
+
+    <menuitem name="Vehículos" id="logistica_mca.parametros_vehiculos_menu" parent="logistica_mca.parametros_menu" sequence="10"/>
+      <menuitem name="Marcas Vehículos" id="logistica_mca.marcas_menu" parent="logistica_mca.parametros_vehiculos_menu" action="logistica_mca.marcas_action_window" sequence="10"/>
+      <menuitem name="Modelos Vehículos" id="logistica_mca.modelos_menu" parent="logistica_mca.parametros_vehiculos_menu" action="logistica_mca.modelos_action_window" sequence="20"/>
+      <menuitem name="Vehículos" id="logistica_mca.vehiculo_menu" parent="logistica_mca.parametros_vehiculos_menu" action="logistica_mca.vehiculo_action_window" sequence="30"/>
+
+    <menuitem name="Traslados" id="logistica_mca.parametros_traslados_menu" parent="logistica_mca.parametros_menu" sequence="20"/>
+      <menuitem name="Tipos Traslados" id="logistica_mca.tipos_traslado_menu" parent="logistica_mca.parametros_traslados_menu" action="logistica_mca.tipos_traslado_action_window" sequence="10"/>
+      <menuitem name="Origen" id="logistica_mca.origen_menu" parent="logistica_mca.parametros_traslados_menu" action="logistica_mca.origen_action_window" sequence="20"/>
+      <menuitem name="Destinos" id="logistica_mca.destino_menu" parent="logistica_mca.parametros_traslados_menu" action="logistica_mca.destino_action_window" sequence="30"/>
+      <menuitem name="Valor Origen->Destino" id="logistica_mca.valortraslado_menu" parent="logistica_mca.parametros_traslados_menu" action="logistica_mca.valortraslado_action_window" sequence="40"/>
+      <menuitem name="Solicitante" id="logistica_mca.solicita_menu" parent="logistica_mca.parametros_traslados_menu" action="logistica_mca.solicita_action_window" sequence="50"/>
+      <menuitem name="Conductores" id="logistica_mca.conductor_menu" parent="logistica_mca.parametros_traslados_menu" action="logistica_mca.conductor_action_window" sequence="60"/>
+
+    <menuitem name="Reclamos" id="logistica_mca.parametros_reclamos_menu" parent="logistica_mca.parametros_menu" sequence="30"/>
+      <menuitem name="Tipos Reclamos" id="logistica_mca.tipos_reclamo_menu" parent="logistica_mca.parametros_reclamos_menu" action="logistica_mca.tipos_reclamo_action_window" sequence="10"/>
+      <menuitem name="Tipos Siniestros" id="logistica_mca.tipos_siniestro_menu" parent="logistica_mca.parametros_reclamos_menu" action="logistica_mca.tipos_siniestro_action_window" sequence="20"/>
+
+    <menuitem name="Rendiciones" id="logistica_mca.parametros_rendiciones_menu" parent="logistica_mca.parametros_menu" sequence="40"/>
+      <menuitem name="Tipos de Gastos" id="logistica_mca.tipos_gasto_menu" parent="logistica_mca.parametros_rendiciones_menu" action="logistica_mca.tipos_rendicion_action_window" sequence="10"/>
+
+  </data>
+</odoo>

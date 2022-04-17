@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <record model="ir.ui.view" id="logistica_mca.reclamo_list_view">
+      <field name="name">logistica_mca.reclamo.tree.view</field>
+      <field name="model">logistica_mca.reclamo</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="fecha"/>
+          <field name="tipo_reclamo_id"/>
+          <field name="currency_id" invisible="1"/>
+          <field name="valor_total" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="logistica_mca.reclamo_form_view">
+      <field name="name">logistica_mca.reclamo.form.view</field>
+      <field name="model">logistica_mca.reclamo</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <div class="oe_title">
+              <label for="name" class="oe_edit_only"/>
+              <h1>
+                  <field name="name" readonly="1"/>
+              </h1>
+            </div>
+            <group>
+                <group>
+                    <field name="fecha"/>
+                    <field name="nombre"/>
+                    <field name="tipo_reclamo_id"/>
+                </group>
+                <group>
+                    <field name="observacion"/>
+                </group>
+            </group>
+            <notebook>
+              <page string="Siniestros" name="siniestros">
+                <field name="reclamo_line" widget="section_and_note_one2many">
+                  <tree string="Detalle de siniestro" editable="bottom">
+                    <control>
+                      <create name="add_detalle_siniestro" string="Agrega detalle"/>
+                    </control>
+                    <field name="fecha"/>
+                    <field name="tipo_siniestro_id"/>
+                    <field name="nro_siniestro"/>
+                    <field name="currency_id" invisible="1"/>
+                    <field name="valor" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                    <field name="deducible"/>
+                  </tree>
+                </field>
+              </page>
+              <page string="Traslados" name="traslado">
+                <field name="traslado_id" readonly="1"/>
+              </page>
+            </notebook>
+          </sheet>
+          <div class="oe_chatter">
+              <field name="message_follower_ids" widget="mail_followers"/>
+              <field name="activity_ids" />
+              <field name="message_ids" widget="mail_thread"/>
+              <field name="message_ids" widget="mail_thread"/>
+          </div>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="logistica_mca.reclamo_search_view">
+        <field name="name">logistica_mca.reclamo.search.view</field>
+        <field name="model">logistica_mca.reclamo</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="fecha"/>
+                <field name="tipo_reclamo_id"/>
+
+                <group expand="0" string="Agrupar por">
+                    <filter name="fecha"  context="{'group_by':'fecha'}"/>
+                    <filter name="tipo_reclamo_id"  context="{'group_by':'tipo_reclamo_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    
+    <record model="ir.actions.act_window" id="logistica_mca.reclamo_action_window">
+      <field name="name">Reclamo</field>
+      <field name="res_model">logistica_mca.reclamo</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- actions -->
+    <menuitem name="Reclamo" id="logistica_mca.reclamo_menu"
+              parent="logistica_mca.reclamos_menu"
+              action="logistica_mca.reclamo_action_window"
+              sequence = "30"
+    />
+
+  </data>
+</odoo>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Sequences for rendicion -->
+        <record id="seq_logistica_mca_rendicion" model="ir.sequence">
+            <field name="name">Rendición</field>
+            <field name="code">logistica_mca.rendicion</field>
+            <field name="prefix">REN-</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <!-- Sequences for traslado -->
+        <record id="seq_logistica_mca_traslado" model="ir.sequence">
+            <field name="name">Traslado</field>
+            <field name="code">logistica_mca.traslado</field>
+            <field name="prefix">TRA-</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <!-- Sequences for reclamo -->
+        <record id="seq_logistica_mca_reclamo" model="ir.sequence">
+            <field name="name">Reclamo</field>
+            <field name="code">logistica_mca.reclamo</field>
+            <field name="prefix">REC-</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+</odoo>

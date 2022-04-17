@@ -1,0 +1,48 @@
+<odoo>
+  <data>
+
+    <record model="ir.ui.view" id="logistica_mca.modelos_list_view">
+      <field name="name">logistica_mca.modelos.tree.view</field>
+      <field name="model">logistica_mca.modelos</field>
+      <field name="arch" type="xml">
+        <tree editable="top" create="1" delete="1" multi_edit="1">
+          <field name="marcas_id"></field>
+          <field name="name"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="logistica_mca.modelos_form_view">
+      <field name="name">logistica_mca.modelos.form.view</field>
+      <field name="model">logistica_mca.modelos</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+          <group>
+              <group>
+                <field name="marcas_id"></field>
+                <field name="name"/>
+              </group>
+            </group>
+          </sheet>
+          <div class="oe_chatter">
+              <field name="message_follower_ids"/>
+              <field name="activity_ids"/>
+              <field name="message_ids"/>
+          </div>
+        </form>
+      </field>
+    </record>
+
+    
+    <record model="ir.actions.act_window" id="logistica_mca.modelos_action_window">
+      <field name="name">Modelos de Vehículos</field>
+      <field name="res_model">logistica_mca.modelos</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- actions -->
+
+
+  </data>
+</odoo>

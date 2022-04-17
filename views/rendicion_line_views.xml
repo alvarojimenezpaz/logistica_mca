@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <record model="ir.ui.view" id="logistica_mca.rendicion_line_list_view">
+      <field name="name">logistica_mca.rendicion_line.tree.view</field>
+      <field name="model">logistica_mca.rendicion.line</field>
+      <field name="arch" type="xml">
+        <tree>
+            <field name="rendicion_id" widget="many2one"/>
+            <field name="fecha"/>
+            <field name="nombre" optional="hide"/>
+            <field name="tiposrendicion_id" optional="show"/>
+            <field name="tipo_doc" optional="show"/>
+            <field name="nro_doc" optional="show"/>
+            <field name="fecha_doc" optional="show"/>
+            <field name="currency_id" invisible="1"/>
+            <field name="valor" widget="monetary" options="{'currency_field': 'currency_id'}" optional="show"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="logistica_mca.rendicion_line_search_view">
+        <field name="name">logistica_mca.rendicion_line.search.view</field>
+        <field name="model">logistica_mca.rendicion.line</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="rendicion_id"/>
+                <field name="fecha"/>
+                <field name="tiposrendicion_id"/>
+                <field name="tipo_doc"/>
+                <field name="nro_doc"/>
+                <field name="fecha_doc"/>
+                <field name="valor"/>
+
+                <group expand="0" string="Agrupar por">
+                    <filter name="rendicion_id"  context="{'group_by':'rendicion_id'}"/>
+                    <filter name="fecha"  context="{'group_by':'fecha'}"/>
+                    <filter name="tiposrendicion_id"  context="{'group_by':'tiposrendicion_id'}"/>
+                    <filter name="tipo_doc"  context="{'group_by':'tipo_doc'}"/>
+                    <filter name="fecha_doc"  context="{'group_by':'fecha_doc'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="logistica_mca.rendicion_line_action_window">
+      <field name="name">Detalle de Rendiciones</field>
+      <field name="res_model">logistica_mca.rendicion.line</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- actions -->
+    <menuitem name="Detalle de Rendiciones" id="logistica_mca.rendicion_line_menu"
+              parent="logistica_mca.rendiciones_menu"
+              action="logistica_mca.rendicion_line_action_window"
+              sequence = "20"
+    />
+
+  </data>
+</odoo>

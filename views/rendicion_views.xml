@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <record model="ir.ui.view" id="logistica_mca.rendicion_list_view">
+      <field name="name">logistica_mca.rendicion.tree.view</field>
+      <field name="model">logistica_mca.rendicion</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="fecha"/>
+          <field name="traslado_id" widget="many2many_tags" options="{'no_create_edit': True}"/>
+          <field name="nro_talonario"/>
+          <field name="currency_id" invisible="1"/>
+          <field name="valor_total" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="logistica_mca.rendicion_form_view">
+      <field name="name">logistica_mca.rendicion.form.view</field>
+      <field name="model">logistica_mca.rendicion</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <div class="oe_title">
+              <label for="name" class="oe_edit_only"/>
+              <h1>
+                  <field name="name" readonly="1"/>
+              </h1>
+            </div>
+            <group >
+              <group>
+                <field name="fecha"/>
+                <field name="nro_talonario"/>
+                <field name="nombre"/>
+              </group>
+            </group>
+
+            <notebook>
+              <page string="Rendiciones" name="rendicion">
+                <field name="rendicion_line" widget="section_and_note_one2many">
+                  <tree string="Detalle de rendición" editable="bottom">
+                    <control>
+                      <create name="add_detalle_rendicion" string="Agrega detalle"/>
+                    </control>
+                    <field name="tiposrendicion_id"/>
+                    <field name="tipo_doc"/>
+                    <field name="nro_doc"/>
+                    <field name="fecha_doc"/>
+                    <field name="currency_id" invisible="1"/>
+                    <field name="valor" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                    <field name="valor_real_line" widget="monetary" options="{'currency_field': 'currency_id'}" readonly="1"/>
+                  </tree>
+                </field>
+              </page>
+              <page string="Traslados" name="traslado">
+                <field name="traslado_id" readonly="1"/>
+              </page>
+            </notebook>
+
+            <group class="oe_subtotal_footer oe_right">
+              <group>
+                <field name="currency_id" invisible="1"/>
+                <field name="valor_total" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+              </group>
+            </group>
+          </sheet>
+          <div class="oe_chatter">
+              <field name="message_follower_ids" widget="mail_followers"/>
+              <field name="activity_ids" />
+              <field name="message_ids" widget="mail_thread"/>
+              <field name="message_ids" widget="mail_thread"/>
+          </div>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="logistica_mca.rendicion_search_view">
+        <field name="name">logistica_mca.rendicion.search.view</field>
+        <field name="model">logistica_mca.rendicion</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+                <field name="fecha"/>
+                <field name="nro_talonario"/>
+                <field name="nombre"/>
+
+                <group expand="0" string="Agrupar por">
+                    <filter name="fecha"  context="{'group_by':'fecha'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="logistica_mca.rendicion_action_window">
+      <field name="name">Rendición</field>
+      <field name="res_model">logistica_mca.rendicion</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- actions -->
+    <menuitem name="Rendiciones" id="logistica_mca.rendicion_menu" parent="logistica_mca.rendiciones_menu"
+              action="logistica_mca.rendicion_action_window" sequence = "10"/>
+
+  </data>
+</odoo>

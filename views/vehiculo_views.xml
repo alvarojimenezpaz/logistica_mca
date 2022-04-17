@@ -1,0 +1,52 @@
+<odoo>
+  <data>
+
+    <record model="ir.ui.view" id="logistica_mca.vehiculo_list_view">
+      <field name="name">logistica_mca.vehiculo.tree.view</field>
+      <field name="model">logistica_mca.vehiculo</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="vin"/>
+          <field name="patente"/>
+          <field name="agno"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="logistica_mca.vehiculo_form_view">
+      <field name="name">logistica_mca.vehiculo.form.view</field>
+      <field name="model">logistica_mca.vehiculo</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+          <group colspan="4">
+              <group colspan="2" col="2">
+                <field name="marcas_id"/>
+                <field name="modelos_id"/>
+                <field name="vin"/>
+                <field name="patente"/>
+                <field name="agno"/>
+              </group>
+            </group>
+          </sheet>
+          <div class="oe_chatter">
+              <field name="message_follower_ids"/>
+              <field name="activity_ids"/>
+              <field name="message_ids"/>
+          </div>
+        </form>
+      </field>
+    </record>
+
+    
+    <record model="ir.actions.act_window" id="logistica_mca.vehiculo_action_window">
+      <field name="name">Vehículos</field>
+      <field name="res_model">logistica_mca.vehiculo</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- actions -->
+
+  </data>
+</odoo>

@@ -1,0 +1,45 @@
+<odoo>
+  <data>
+
+    <record model="ir.ui.view" id="logistica_mca.solicita_list_view">
+      <field name="name">logistica_mca.solicita.tree.view</field>
+      <field name="model">logistica_mca.solicita</field>
+      <field name="arch" type="xml">
+        <tree editable="top" create="1" delete="1" multi_edit="1">
+          <field name="name"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="logistica_mca.solicita_form_view">
+      <field name="name">logistica_mca.solicita.form.view</field>
+      <field name="model">logistica_mca.solicita</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+          <group colspan="4">
+              <group colspan="2" col="2">
+                <field name="name"/>
+              </group>
+            </group>
+          </sheet>
+          <div class="oe_chatter">
+              <field name="message_follower_ids"/>
+              <field name="activity_ids"/>
+              <field name="message_ids"/>
+          </div>
+        </form>
+      </field>
+    </record>
+
+    
+    <record model="ir.actions.act_window" id="logistica_mca.solicita_action_window">
+      <field name="name">Solicita Traslado</field>
+      <field name="res_model">logistica_mca.solicita</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- actions -->
+
+  </data>
+</odoo>
