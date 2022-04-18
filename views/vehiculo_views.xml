@@ -5,8 +5,9 @@
       <field name="name">logistica_mca.vehiculo.tree.view</field>
       <field name="model">logistica_mca.vehiculo</field>
       <field name="arch" type="xml">
-        <tree>
-          <field name="name"/>
+        <tree string="Vehículos" editable="top" >
+          <field name="marcas_id"/>
+          <field name="modelos_id"/>
           <field name="vin"/>
           <field name="patente"/>
           <field name="agno"/>

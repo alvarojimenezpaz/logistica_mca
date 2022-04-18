@@ -17,4 +17,4 @@ class Vehiculo(models.Model):
     @api.depends('marcas_id.name', 'modelos_id.name')
     def _compute_vehicle_name(self):
         for record in self:
-            record.name = (record.marcas_id.name or '') + ', ' + (record.modelos_id.name or '') + ', ' + (record.vin or '')
+            record.name = (record.marcas_id.name or '') + ', ' + (record.modelos_id.name or '') + ', VIN ' + (record.vin or '') + ', PT ' + (record.patente or '')

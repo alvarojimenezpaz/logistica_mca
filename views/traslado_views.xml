@@ -13,9 +13,7 @@
                     <field name="pedido" optional="hide"/>
                     <field name="hes"/>
                     <field name="factura" optional="hide"/>
-                    <field name="marcas_id"/>
-                    <field name="modelos_id"/>
-                    <field name="vin"/>
+                    <field name="vehiculo_id"/>
                     <field name="tipo_traslado"/>
                     <field name="solicita"/>
                     <field name="conductor"/>
@@ -56,9 +54,7 @@
                         <group>
                             <group>
                                 <field name="cliente"/>
-                                <field name="marcas_id"/>
-                                <field name="modelos_id"/>
-                                <field name="vin"/>
+                                <field name="vehiculo_id" widget="many2one"/>
                             </group>
                             <group>
                                 <field name="valortraslado_id" />
@@ -134,13 +130,12 @@
                     <field name="solicita"/>
                     <field name="conductor"/>
                     <field name="cliente"/>
-                    <field name="marcas_id"/>
+<!--                    <field name="marcas_id"/>
                     <field name="modelos_id"/>
-                    <field name="vin"/>
-<!--                    <field name="vehiculo_id" filter_domain="['|','|',('vehiculo_id.vin', 'ilike', self),
+                    <field name="vin"/>-->
+                    <field name="vehiculo_id" filter_domain="['|','|',('vehiculo_id.vin', 'ilike', self),
                                                                       ('vehiculo_id.marcas_id.name', 'ilike', self),
                                                                       ('vehiculo_id.modelos_id.name', 'ilike', self)]"/>
--->
                     <field name="rendicion_id"/>
                     <field name="reclamo_id"/>
 
@@ -150,9 +145,7 @@
                         <filter name="conductor" context="{'group_by':'conductor'}"/>
                         <filter name="solicita" context="{'group_by':'solicita'}"/>
                         <filter name="cliente"  context="{'group_by':'cliente'}"/>
-                        <filter name="marcas_id"  context="{'group_by':'marcas_id'}"/>
-                        <filter name="modelos_id"  context="{'group_by':'modelos_id'}"/>
-                        <filter name="vin"  context="{'group_by':'vin'}"/>
+                        <filter name="vehiculo_id"  context="{'group_by':'vehiculo_id'}"/>
                     </group>
 
                 </search>
