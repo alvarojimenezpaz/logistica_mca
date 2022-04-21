@@ -20,6 +20,9 @@
                     <field name="cliente"/>
                     <field name="rendicion_id" widget="many2many_tags" optional="hide"/>
                     <field name="reclamo_id" widget="many2many_tags" optional="hide"/>
+                    <field name="valor" optional="show"/>
+                    <field name="valor_uf" optional="show"/>
+                    <field name="state"/>
                 </tree>
             </field>
         </record>
@@ -29,6 +32,9 @@
             <field name="model">logistica_mca.traslado</field>
             <field name="arch" type="xml">
                 <form>
+                    <header>
+                        <field name="state" widget="statusbar" options="{'clickable':'1'}" />
+                    </header>
                     <sheet>
                         <div class="oe_title">
                             <label for="name" class="oe_edit_only"/>
@@ -60,13 +66,15 @@
                                 <field name="valortraslado_id" />
                                 <field name="currency_id" invisible="1"/>
                                 <field name="valor" widget="monetary" options="{'currency_field': 'currency_id'}"/>
-                                <field name="valor_adicionales" widget="monetary" options="{'currency_field': 'currency_id'}"/>
-                                <field name="valor_comisiones" widget="monetary" options="{'currency_field': 'currency_id'}"/>
-                                <field name="valor_reclamos" widget="monetary" options="{'currency_field': 'currency_id'}"/>
-                                <field name="valor_rendiciones" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                <field name="valor_uf" />
                             </group>
                         </group>
-
+                        <group>
+                            <field name="valor_adicionales" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            <field name="valor_comisiones" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            <field name="valor_reclamos" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            <field name="valor_rendiciones" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                        </group>
                         <notebook>
 
                             <page string="Rendiciones" name="rendicion">
@@ -138,6 +146,7 @@
                                                                       ('vehiculo_id.modelos_id.name', 'ilike', self)]"/>
                     <field name="rendicion_id"/>
                     <field name="reclamo_id"/>
+                    <field name="state"/>
 
                     <group expand="0" string="Agrupar por">
                         <filter name="tipo_traslado" context="{'group_by':'tipo_traslado'}"/>
@@ -146,6 +155,7 @@
                         <filter name="solicita" context="{'group_by':'solicita'}"/>
                         <filter name="cliente"  context="{'group_by':'cliente'}"/>
                         <filter name="vehiculo_id"  context="{'group_by':'vehiculo_id'}"/>
+                        <filter name="state"  context="{'group_by':'state'}"/>
                     </group>
 
                 </search>

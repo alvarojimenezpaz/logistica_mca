@@ -14,6 +14,7 @@ class Traslado(models.Model):
         for line in self:
             if line.valortraslado_id:
                 line.valor = line.valortraslado_id.valor
+                line.valor_uf = line.valortraslado_id.valor_uf
 
     @api.depends('adicional_id.valor')
     def _amount_adicionales(self):
@@ -35,6 +36,16 @@ class Traslado(models.Model):
 
 
     name = fields.Char(string='Traslado', required=True, copy=False, index=True, default='New')
+    state = fields.Selection([
+        ("new","New"),
+        ("ingresado","Ingresado"),
+        ("asignado","Asignado"),
+        ("transito", "En Transito"),
+        ("entregado", "Entregado"),
+        ("verificado", "Verificado"),
+        ("facturado", "Facturado"),
+        ("cancelado", "Cancelado"),
+    ], default="new", string="Estado")
     guia = fields.Char(string="N° Guía", required=True, default=0)
     pedido = fields.Char(string="N° Pedido", required=True, default=0)
     hes = fields.Char(string="N° HES", required=True, default=0)
@@ -49,6 +60,7 @@ class Traslado(models.Model):
     #vin = fields.Char(string='VIN', required=True,  tracking=True)
     valortraslado_id = fields.Many2one('logistica_mca.valortraslado', string='Origen -> Destino', required=True)
     valor = fields.Float(string='Valor', tracking=True)
+    valor_uf = fields.Float(string='UFs', tracking=True)
     factura = fields.Char(string="N° Factura", required=True, default=0)
     #------------------------------------------------------------------------------------------------------
     rendicion_id = fields.Many2many('logistica_mca.rendicion', string='Rendición')

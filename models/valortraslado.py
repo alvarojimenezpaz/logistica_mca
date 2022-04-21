@@ -19,6 +19,7 @@ class Valortraslado(models.Model):
     destino_id = fields.Many2one('logistica_mca.destino',string='Destino', required=True)
     tipo_traslado = fields.Many2one('logistica_mca.tipos.traslado', string='Tipo Traslado', required=True)
     valor = fields.Float(string='Valor', required=True, default=0)
+    valor_uf = fields.Float(string='UFs', required=True, default=0)
 
     @api.model
     def _default_currency_id(self):
