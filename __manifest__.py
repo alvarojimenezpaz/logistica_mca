@@ -49,6 +49,8 @@
         'views/tipos_siniestro_views.xml',
         'views/reclamo_views.xml',
         'views/reclamo_line_views.xml',
+        'reports/traslado_template.xml',
+        'reports/traslado_report.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

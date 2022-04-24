@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="traslado_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page container">
+                        <div class="oe_structure"/>
+                        <h2>Traslado : <span t-field="doc.name"/> </h2>
+
+                        <table class="table o_main_table" style="border: 1px solid white; width:100%">
+                            <tr>
+                                <td>N° Guía: <span t-field="doc.guia" /></td>
+                                <td>Fecha: <span t-field="doc.fecha" /></td>
+                            </tr>
+                            <tr>
+                                <td>N° Pedido: <span t-field="doc.pedido" /></td>
+                                <td>Tipo Traslado: <span t-field="doc.tipo_traslado" /></td>
+                            </tr>
+                            <tr>
+                                <td>N° HES: <span t-field="doc.hes" /></td>
+                                <td>Solicita: <span t-field="doc.solicita" /></td>
+                            </tr>
+                            <tr>
+                                <td>N° Factura: <span t-field="doc.factura" /></td>
+                                <td>Conductor <span t-field="doc.conductor" /></td>
+                            </tr>
+                        </table>
+
+                        <div class="oe_structure"/>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>
