@@ -4,30 +4,59 @@
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="doc">
                 <t t-call="web.external_layout">
-                    <div class="page container">
-                        <div class="oe_structure"/>
-                        <h2>Traslado : <span t-field="doc.name"/> </h2>
+                    <div class="page container" style="margin-top: -2.5rem !important">
+                        <div class="oe_structure">
+                            <h2>Traslado : <span t-field="doc.name"/> </h2>
 
-                        <table class="table o_main_table" style="border: 1px solid white; width:100%">
-                            <tr>
-                                <td>N° Guía: <span t-field="doc.guia" /></td>
-                                <td>Fecha: <span t-field="doc.fecha" /></td>
-                            </tr>
-                            <tr>
-                                <td>N° Pedido: <span t-field="doc.pedido" /></td>
-                                <td>Tipo Traslado: <span t-field="doc.tipo_traslado" /></td>
-                            </tr>
-                            <tr>
-                                <td>N° HES: <span t-field="doc.hes" /></td>
-                                <td>Solicita: <span t-field="doc.solicita" /></td>
-                            </tr>
-                            <tr>
-                                <td>N° Factura: <span t-field="doc.factura" /></td>
-                                <td>Conductor <span t-field="doc.conductor" /></td>
-                            </tr>
-                        </table>
+                            <table class="table o_report_layout_standard table-sm table-striped o_main_table " >
+                                <tr>
+                                    <td width="20%">N° Guía: </td>
+                                    <td width="30%"><span t-field="doc.guia" /></td>
+                                    <td width="20%">Fecha: </td>
+                                    <td width="30%"><span t-field="doc.fecha" /></td>
+                                </tr>
+                                <tr>
+                                    <td>N° Pedido: </td>
+                                    <td><span t-field="doc.pedido" /></td>
+                                    <td>Tipo Traslado: </td>
+                                    <td><span t-field="doc.tipo_traslado" /></td>
+                                </tr>
+                                <tr>
+                                    <td>N° HES: </td>
+                                    <td><span t-field="doc.hes" /></td>
+                                    <td>Solicita: </td>
+                                    <td><span t-field="doc.solicita" /></td>
+                                </tr>
+                                <tr>
+                                    <td>N° Factura: </td>
+                                    <td><span t-field="doc.factura" /></td>
+                                    <td>Conductor </td>
+                                    <td><span t-field="doc.conductor" /></td>
+                                </tr>
+                            </table>
+                            <br/>
+                            <table class="table o_report_layout_standard table-sm table-striped o_main_table " >
+                                <tr>
+                                    <td width="20%">Cliente: </td>
+                                    <td width="30%"><span t-field="doc.cliente" /></td>
+                                    <td width="20%">Origen -> Destino </td>
+                                    <td width="30%"><span t-field="doc.valortraslado_id" /></td>
+                                </tr>
+                                <tr>
+                                    <td>Vehículo: </td>
+                                    <td><span t-field="doc.vehiculo_id" /></td>
+                                    <td>Valor: </td>
+                                    <td><span t-field="doc.valor" /></td>
+                                </tr>
+                                <tr>
+                                    <td> </td>
+                                    <td> </td>
+                                    <td>UFs: </td>
+                                    <td><span t-field="doc.valor_uf" /></td>
+                                </tr>
+                            </table>
 
-                        <div class="oe_structure"/>
+                        </div>
                     </div>
                 </t>
             </t>
