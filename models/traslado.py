@@ -44,7 +44,7 @@ class Traslado(models.Model):
         ("entregado", "Entregado"),
         ("verificado", "Verificado"),
         ("facturado", "Facturado"),
-        ("cancelado", "Cancelado"),
+        ("infructuoso", "Infructuoso"),
     ], default="new", string="Estado")
     guia = fields.Char(string="N° Guía", required=True, default=0)
     pedido = fields.Char(string="N° Pedido", required=True, default=0)
