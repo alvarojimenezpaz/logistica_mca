@@ -7,5 +7,5 @@ class Destino(models.Model):
     _inherit = ['mail.thread','mail.activity.mixin']
     _description = 'Destino'
 
-    name = fields.Char(string='Nombre',required=True)
-    direccion = fields.Char(string='Dirección',required=True)   
+    name = fields.Char(string='Nombre',required=True, tracking=True)
+    direccion = fields.Char(string='Dirección',required=True, tracking=True)

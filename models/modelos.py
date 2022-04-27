@@ -7,5 +7,5 @@ class Modelo(models.Model):
     _inherit = ['mail.thread','mail.activity.mixin']
     _description = 'Modelos de Vehículos'
 
-    name = fields.Char(string='Nombre Modelo',required=True)
+    name = fields.Char(string='Nombre Modelo',required=True, tracking=True)
     marcas_id = fields.Many2one('logistica_mca.marcas', string='Marca', tracking=True, required=True)

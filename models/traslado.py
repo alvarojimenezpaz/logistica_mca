@@ -45,28 +45,28 @@ class Traslado(models.Model):
         ("verificado", "Verificado"),
         ("facturado", "Facturado"),
         ("infructuoso", "Infructuoso"),
-    ], default="new", string="Estado")
-    guia = fields.Char(string="N° Guía", required=True, default=0)
-    pedido = fields.Char(string="N° Pedido", required=True, default=0)
-    hes = fields.Char(string="N° HES", required=True, default=0)
+    ], default="new", string="Estado", tracking=True)
+    guia = fields.Char(string="N° Guía", required=True, default=0, tracking=True)
+    pedido = fields.Char(string="N° Pedido", required=True, default=0, tracking=True)
+    hes = fields.Char(string="N° HES", required=True, default=0, tracking=True)
     fecha = fields.Date(string='Fecha', required=True, tracking=True)
-    solicita = fields.Many2one('logistica_mca.solicita', string='Solicita', required=True)
-    conductor = fields.Many2one('logistica_mca.conductor', string='Conductor', required=True)
-    tipo_traslado = fields.Many2one('logistica_mca.tipos.traslado', string='Tipo Traslado', required=True)
-    cliente = fields.Many2one('res.partner', string='Cliente', required=True)
-    vehiculo_id = fields.Many2one('logistica_mca.vehiculo', string='Vehículo', required=True)
+    solicita = fields.Many2one('logistica_mca.solicita', string='Solicita', required=True, tracking=True)
+    conductor = fields.Many2one('logistica_mca.conductor', string='Conductor', required=True, tracking=True)
+    tipo_traslado = fields.Many2one('logistica_mca.tipos.traslado', string='Tipo Traslado', required=True, tracking=True)
+    cliente = fields.Many2one('res.partner', string='Cliente', required=True, tracking=True)
+    vehiculo_id = fields.Many2one('logistica_mca.vehiculo', string='Vehículo', required=True, tracking=True)
     #marcas_id = fields.Many2one('logistica_mca.marcas',string='Marca', required=True)
     #modelos_id = fields.Many2one('logistica_mca.modelos',string='Modelo', required=True)
     #vin = fields.Char(string='VIN', required=True,  tracking=True)
-    valortraslado_id = fields.Many2one('logistica_mca.valortraslado', string='Origen -> Destino', required=True)
+    valortraslado_id = fields.Many2one('logistica_mca.valortraslado', string='Origen -> Destino', required=True, tracking=True)
     valor = fields.Float(string='Valor', tracking=True)
     valor_uf = fields.Float(string='UFs', tracking=True)
-    factura = fields.Char(string="N° Factura", required=True, default=0)
+    factura = fields.Char(string="N° Factura", required=True, default=0, tracking=True)
     #------------------------------------------------------------------------------------------------------
-    rendicion_id = fields.Many2many('logistica_mca.rendicion', string='Rendición')
+    rendicion_id = fields.Many2many('logistica_mca.rendicion', string='Rendición', tracking=True)
     valor_rendiciones = fields.Float('Rendiciones', related='rendicion_id.valor_total', readonly=True)
     #------------------------------------------------------------------------------------------------------
-    reclamo_id = fields.Many2many('logistica_mca.reclamo', string='Reclamo')
+    reclamo_id = fields.Many2many('logistica_mca.reclamo', string='Reclamo', tracking=True)
     valor_reclamos = fields.Float('Reclamos', related='reclamo_id.valor_total', readonly=True )
     #------------------------------------------------------------------------------------------------------
     adicional_id = fields.One2many('logistica_mca.traslado.adicional', 'traslado_id', string='Detalle Adicional',

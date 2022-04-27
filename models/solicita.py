@@ -7,4 +7,4 @@ class Solicita(models.Model):
     _inherit = ['mail.thread','mail.activity.mixin']
     _description = 'solicita'
 
-    name = fields.Char(string='Nombre',required=True) 
+    name = fields.Char(string='Nombre',required=True, tracking=True)

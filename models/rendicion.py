@@ -56,7 +56,7 @@ class RendicionLine(models.Model):
                 line.valor_real_line = (line.valor)
         return line.valor_real_line
 
-    rendicion_id = fields.Many2one('logistica_mca.rendicion', string='Rendición', tracking=True, required=True)
+    rendicion_id = fields.Many2one('logistica_mca.rendicion', string='Rendición', tracking=True)
     fecha = fields.Date('Fecha', related='rendicion_id.fecha', store=True, readonly=True)
     nro_talonario = fields.Char('Nro.Talonario', related='rendicion_id.nro_talonario', readonly=True)
     nombre = fields.Char('Nombre', related='rendicion_id.nombre', readonly=True)

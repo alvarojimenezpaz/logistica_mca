@@ -7,4 +7,4 @@ class Marca(models.Model):
     _inherit = ['mail.thread','mail.activity.mixin']
     _description = 'Marcas de Vehículos'
 
-    name = fields.Char(string='Marca de vehículo',required=True) 
+    name = fields.Char(string='Marca de vehículo',required=True, tracking=True)

@@ -14,12 +14,12 @@ class Valortraslado(models.Model):
             result.append((record.id, rec_name))
         return result
 
-    name = fields.Char(string='Origen -> Destino')
-    origen_id = fields.Many2one('logistica_mca.origen',string='Origen', required=True)
-    destino_id = fields.Many2one('logistica_mca.destino',string='Destino', required=True)
-    tipo_traslado = fields.Many2one('logistica_mca.tipos.traslado', string='Tipo Traslado', required=True)
-    valor = fields.Float(string='Valor', required=True, default=0)
-    valor_uf = fields.Float(string='UFs', required=True, default=0)
+    name = fields.Char(string='Origen -> Destino', tracking=True)
+    origen_id = fields.Many2one('logistica_mca.origen',string='Origen', required=True, tracking=True)
+    destino_id = fields.Many2one('logistica_mca.destino',string='Destino', required=True, tracking=True)
+    tipo_traslado = fields.Many2one('logistica_mca.tipos.traslado', string='Tipo Traslado', required=True, tracking=True)
+    valor = fields.Float(string='Valor', required=True, default=0, tracking=True)
+    valor_uf = fields.Float(string='UFs', required=True, default=0, tracking=True)
 
     @api.model
     def _default_currency_id(self):
