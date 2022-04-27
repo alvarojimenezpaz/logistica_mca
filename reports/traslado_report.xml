@@ -3,7 +3,7 @@
     <record id="traslado_report" model="ir.actions.report">
         <field name="name">Traslado</field>
         <field name="model">logistica_mca.traslado</field>
-        <field name="report_type">qweb-html</field>
+        <field name="report_type">qweb-pdf</field>
         <field name="report_name">logistica_mca.traslado_template</field>
         <field name="report_file">logistica_mca.traslado_template</field>
         <field name="binding_model_id" ref="model_logistica_mca_traslado"/>

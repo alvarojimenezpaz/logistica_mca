@@ -10,10 +10,10 @@
 
                             <table class="table o_report_layout_standard table-sm table-striped o_main_table " >
                                 <tr>
-                                    <td width="20%">N° Guía: </td>
-                                    <td width="30%"><span t-field="doc.guia" /></td>
+                                    <td width="15%">N° Guía: </td>
+                                    <td width="15%"><span t-field="doc.guia" /></td>
                                     <td width="20%">Fecha: </td>
-                                    <td width="30%"><span t-field="doc.fecha" /></td>
+                                    <td width="50%"><span t-field="doc.fecha" /></td>
                                 </tr>
                                 <tr>
                                     <td>N° Pedido: </td>
@@ -34,28 +34,61 @@
                                     <td><span t-field="doc.conductor" /></td>
                                 </tr>
                             </table>
-                            <br/>
+
+                            <h3>Cliente</h3>
                             <table class="table o_report_layout_standard table-sm table-striped o_main_table " >
                                 <tr>
-                                    <td width="20%">Cliente: </td>
-                                    <td width="30%"><span t-field="doc.cliente" /></td>
-                                    <td width="20%">Origen -> Destino </td>
-                                    <td width="30%"><span t-field="doc.valortraslado_id" /></td>
+                                    <td width="15%">Nombre: </td>
+                                    <td width="85%"><span t-field="doc.cliente.name" /></td>
                                 </tr>
                                 <tr>
-                                    <td>Vehículo: </td>
-                                    <td><span t-field="doc.vehiculo_id" /></td>
-                                    <td>Valor: </td>
-                                    <td><span t-field="doc.valor" /></td>
+                                    <td>RUT: </td>
+                                    <td><span t-field="doc.cliente.vat" /></td>
                                 </tr>
                                 <tr>
-                                    <td> </td>
-                                    <td> </td>
-                                    <td>UFs: </td>
-                                    <td><span t-field="doc.valor_uf" /></td>
+                                    <td>Direccion: </td>
+                                    <td><span t-field="doc.cliente.street" /></td>
+                                </tr>
+                                <tr>
+                                    <td>Comuna: </td>
+                                    <td><span t-field="doc.cliente.city" /></td>
                                 </tr>
                             </table>
 
+                            <h3>Vehículo</h3>
+                            <table class="table o_report_layout_standard table-sm table-striped o_main_table " >
+                                <tr>
+                                    <td width="15%">Marca: </td>
+                                    <td width="85%"><span t-field="doc.vehiculo_id.marcas_id" /></td>
+                                </tr>
+                                <tr>
+                                    <td>Modelo: </td>
+                                    <td><span t-field="doc.vehiculo_id.modelos_id" /></td>
+                                </tr>
+                                <tr>
+                                    <td>VIN/Chasis: </td>
+                                    <td><span t-field="doc.vehiculo_id.vin" /></td>
+                                </tr>
+                                <tr>
+                                    <td>Patente: </td>
+                                    <td><span t-field="doc.vehiculo_id.patente" /></td>
+                                </tr>
+                            </table>
+
+                            <h3>Origen --> Destino</h3>
+                            <table class="table o_report_layout_standard table-sm table-striped o_main_table " >
+                                <tr>
+                                    <td width="15%">Origen: </td>
+                                    <td width="35%"><span t-field="doc.valortraslado_id.origen_id" /></td>
+                                    <td width="50%"><span t-field="doc.valortraslado_id.origen_id.direccion" /></td>
+                                </tr>
+                                <tr>
+                                    <td>Destino: </td>
+                                    <td><span t-field="doc.valortraslado_id.destino_id" /></td>
+                                    <td><span t-field="doc.valortraslado_id.destino_id.direccion" /></td>
+                                </tr>
+
+                            </table>
                         </div>
                     </div>
                 </t>
