@@ -3,7 +3,6 @@
 #from tokenize import String
 from odoo import models, fields, api
 
-
 class Traslado(models.Model):
     _name = 'logistica_mca.traslado'
     _inherit = ['mail.thread', 'mail.activity.mixin']

@@ -4,7 +4,7 @@ from odoo import models, fields, api
 
 class Vehiculo(models.Model):
     _name = 'logistica_mca.vehiculo'
-    _inherit = ['mail.thread','mail.activity.mixin']
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Vehículos'
 
     name = fields.Char(string='Vehículo', compute="_compute_vehicle_name", tracking=True)
